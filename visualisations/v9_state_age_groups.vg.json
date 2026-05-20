@@ -1,0 +1,66 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Older Population Composition by State, 2024",
+  "width": "container",
+  "height": 360,
+  "data": {"url": "data/older_population_lga.csv"},
+  "transform": [
+    {
+      "aggregate": [
+        {"op": "sum", "field": "pop_65_74", "as": "sum_65_74"},
+        {"op": "sum", "field": "pop_75_84", "as": "sum_75_84"},
+        {"op": "sum", "field": "pop_85_plus", "as": "sum_85_plus"},
+        {"op": "sum", "field": "pop_65_plus", "as": "state_65plus"}
+      ],
+      "groupby": ["state"]
+    },
+    {
+      "fold": ["sum_65_74", "sum_75_84", "sum_85_plus"],
+      "as": ["age_group", "count"]
+    },
+    {
+      "calculate": "datum.count / datum.state_65plus * 100",
+      "as": "percent_of_older"
+    },
+    {
+      "calculate": "replace(replace(replace(datum.age_group, 'sum_65_74', '65–74'), 'sum_75_84', '75–84'), 'sum_85_plus', '85+')",
+      "as": "age_label"
+    }
+  ],
+  "mark": {"type": "bar"},
+  "encoding": {
+    "x": {
+      "field": "state",
+      "type": "nominal",
+      "title": null,
+      "sort": "-y",
+      "axis": {"labelAngle": -35, "labelFontSize": 11}
+    },
+    "y": {
+      "field": "percent_of_older",
+      "type": "quantitative",
+      "title": "% of all people 65+",
+      "scale": {"domain": [0, 65]},
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
+    },
+    "xOffset": {"field": "age_label"},
+    "color": {
+      "field": "age_label",
+      "type": "nominal",
+      "title": "Age Group",
+      "scale": {
+        "domain": ["65–74", "75–84", "85+"],
+        "range": ["#fdbb84", "#e34a33", "#800026"]
+      },
+      "legend": {"orient": "top", "labelFontSize": 12}
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "age_label", "type": "nominal", "title": "Age Group"},
+      {"field": "percent_of_older", "type": "quantitative", "format": ".1f",
+        "title": "% of 65+ Pop."},
+      {"field": "count", "type": "quantitative", "format": ",",
+        "title": "Number of People"}
+    ]
+  }
+}

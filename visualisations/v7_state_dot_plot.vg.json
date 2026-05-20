@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Proportion of Population Aged 65+ by State and Territory, 2024",
+  "width": "container",
+  "height": 300,
+  "data": {"url": "data/older_population_lga.csv"},
+  "transform": [
+    {
+      "aggregate": [
+        {"op": "sum", "field": "total_population", "as": "state_pop"},
+        {"op": "sum", "field": "pop_65_plus", "as": "state_65plus"}
+      ],
+      "groupby": ["state"]
+    },
+    {
+      "calculate": "datum.state_65plus / datum.state_pop * 100",
+      "as": "state_percent"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "circle", "color": "#d9480f", "size": 160,
+        "stroke": "white", "strokeWidth": 1.5},
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null,
+          "axis": {"labelFontSize": 12}
+        },
+        "x": {
+          "field": "state_percent",
+          "type": "quantitative",
+          "title": "% Aged 65+",
+          "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "state_percent", "type": "quantitative", "format": ".1f",
+            "title": "% Aged 65+"},
+          {"field": "state_65plus", "type": "quantitative", "format": ",",
+            "title": "People 65+"},
+          {"field": "state_pop", "type": "quantitative", "format": ",",
+            "title": "Total Population"}
+        ]
+      }
+    },
+    {
+      "data": {"values": [{"national_avg": 17.28}]},
+      "mark": {
+        "type": "rule",
+        "color": "#888888",
+        "strokeDash": [4, 4],
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {"field": "national_avg", "type": "quantitative"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "LGA Ageing Profile: Median Age vs Share of Residents Aged 65+, 2024",
+  "width": "container",
+  "height": 420,
+  "data": {"url": "data/older_population_lga.csv"},
+  "mark": {
+    "type": "circle",
+    "opacity": 0.6,
+    "stroke": "white",
+    "strokeWidth": 0.5
+  },
+  "encoding": {
+    "x": {
+      "field": "median_age",
+      "type": "quantitative",
+      "title": "Median Age (years)",
+      "scale": {"domain": [20, 65]},
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
+    },
+    "y": {
+      "field": "percent_65_plus",
+      "type": "quantitative",
+      "title": "% Aged 65+",
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
+    },
+    "size": {
+      "field": "total_population",
+      "type": "quantitative",
+      "title": "Total LGA Population",
+      "scale": {"type": "sqrt", "range": [8, 300]},
+      "legend": {"labelFontSize": 11, "titleFontSize": 12}
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State",
+      "scale": {"scheme": "category10"},
+      "legend": {"labelFontSize": 11, "titleFontSize": 12}
+    },
+    "tooltip": [
+      {"field": "lga_name", "type": "nominal", "title": "LGA"},
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "median_age", "type": "quantitative", "format": ".1f",
+        "title": "Median Age"},
+      {"field": "percent_65_plus", "type": "quantitative", "format": ".1f",
+        "title": "% Aged 65+"},
+      {"field": "total_population", "type": "quantitative", "format": ",",
+        "title": "Total Population"}
+    ]
+  }
+}

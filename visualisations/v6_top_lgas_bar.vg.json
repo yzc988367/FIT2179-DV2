@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top 20 LGAs with the Highest Proportion of Residents Aged 65+, 2024",
+  "width": "container",
+  "height": 450,
+  "data": {"url": "data/older_population_lga.csv"},
+  "transform": [
+    {
+      "window": [{"op": "row_number", "as": "rank"}],
+      "sort": [{"field": "percent_65_plus", "order": "descending"}]
+    },
+    {"filter": "datum.rank <= 20"},
+    {"calculate": "datum.lga_name + ', ' + datum.state", "as": "label"}
+  ],
+  "mark": {"type": "bar", "color": "#d97706"},
+  "encoding": {
+    "y": {
+      "field": "label",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {"labelFontSize": 11, "labelLimit": 200}
+    },
+    "x": {
+      "field": "percent_65_plus",
+      "type": "quantitative",
+      "title": "% Aged 65+",
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
+    },
+    "tooltip": [
+      {"field": "lga_name", "type": "nominal", "title": "LGA"},
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "percent_65_plus", "type": "quantitative", "format": ".1f",
+        "title": "% Aged 65+"},
+      {"field": "pop_65_plus", "type": "quantitative", "format": ",",
+        "title": "People 65+"},
+      {"field": "median_age", "type": "quantitative", "format": ".1f",
+        "title": "Median Age"}
+    ]
+  }
+}

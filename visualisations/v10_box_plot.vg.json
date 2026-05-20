@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "How Median Age Varies Across LGAs Within Each State, 2024",
+  "width": "container",
+  "height": 360,
+  "data": {"url": "data/older_population_lga.csv"},
+  "mark": {"type": "boxplot", "extent": "min-max", "size": 28},
+  "encoding": {
+    "x": {
+      "field": "state",
+      "type": "nominal",
+      "title": null,
+      "sort": "-y",
+      "axis": {"labelAngle": -35, "labelFontSize": 11}
+    },
+    "y": {
+      "field": "median_age",
+      "type": "quantitative",
+      "title": "Median Age (years)",
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "legend": null,
+      "scale": {"scheme": "category10"}
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"}
+    ]
+  }
+}

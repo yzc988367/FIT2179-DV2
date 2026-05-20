@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Number of People Aged 65+ by Local Government Area, 2024",
+  "width": "container",
+  "height": 500,
+  "projection": {"type": "mercator", "center": [133.5, -27]},
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_lga.topojson",
+        "format": {"type": "topojson", "feature": "australia_lga"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8e8e8",
+        "stroke": "white",
+        "strokeWidth": 0.2
+      }
+    },
+    {
+      "data": {"url": "data/lga_centroids.csv"},
+      "mark": {
+        "type": "circle",
+        "opacity": 0.65,
+        "color": "#d9480f",
+        "stroke": "white",
+        "strokeWidth": 0.3
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "size": {
+          "field": "pop_65_plus",
+          "type": "quantitative",
+          "title": "People 65+",
+          "scale": {"type": "sqrt", "range": [1, 350], "domain": [0, 450000]},
+          "legend": {
+            "orient": "bottom-right",
+            "format": "~s",
+            "labelFontSize": 11,
+            "titleFontSize": 12
+          }
+        },
+        "tooltip": [
+          {"field": "lga_name", "type": "nominal", "title": "LGA"},
+          {"field": "pop_65_plus", "type": "quantitative", "format": ",",
+            "title": "Population 65+"},
+          {"field": "percent_65_plus", "type": "quantitative", "format": ".1f",
+            "title": "% Aged 65+"}
+        ]
+      }
+    }
+  ]
+}

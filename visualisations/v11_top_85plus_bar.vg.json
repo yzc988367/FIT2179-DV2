@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top 10 LGAs by Share of Residents Aged 85+, 2024",
+  "width": "container",
+  "height": 320,
+  "data": {"url": "data/older_population_lga.csv"},
+  "transform": [
+    {
+      "calculate": "datum.pop_85_plus / datum.total_population * 100",
+      "as": "percent_85_plus"
+    },
+    {
+      "window": [{"op": "row_number", "as": "rank"}],
+      "sort": [{"field": "percent_85_plus", "order": "descending"}]
+    },
+    {"filter": "datum.rank <= 10"},
+    {"calculate": "datum.lga_name + ', ' + datum.state", "as": "label"}
+  ],
+  "mark": {"type": "bar", "color": "#800026"},
+  "encoding": {
+    "y": {
+      "field": "label",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {"labelFontSize": 11, "labelLimit": 200}
+    },
+    "x": {
+      "field": "percent_85_plus",
+      "type": "quantitative",
+      "title": "% Aged 85+",
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
+    },
+    "tooltip": [
+      {"field": "lga_name", "type": "nominal", "title": "LGA"},
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "percent_85_plus", "type": "quantitative", "format": ".1f",
+        "title": "% Aged 85+"},
+      {"field": "pop_85_plus", "type": "quantitative", "format": ",",
+        "title": "People 85+"},
+      {"field": "median_age", "type": "quantitative", "format": ".1f",
+        "title": "Median Age"}
+    ]
+  }
+}

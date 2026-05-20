@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Proportion of Population Aged 65+ by Remoteness Category, 2023",
+  "width": "container",
+  "height": 280,
+  "data": {"url": "data/older_population_remoteness.csv"},
+  "transform": [
+    {
+      "calculate": "datum.remoteness == 'Inner regional' ? datum.remoteness + ' (highest)' : datum.remoteness == 'Very remote' ? datum.remoteness + ' (lowest)' : datum.remoteness",
+      "as": "label"
+    }
+  ],
+  "mark": {"type": "bar", "color": "#d97706"},
+  "encoding": {
+    "y": {
+      "field": "label",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {"labelFontSize": 12}
+    },
+    "x": {
+      "field": "percent_65_plus",
+      "type": "quantitative",
+      "title": "% Aged 65+",
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12},
+      "scale": {"domain": [0, 25]}
+    },
+    "tooltip": [
+      {"field": "remoteness", "type": "nominal", "title": "Category"},
+      {"field": "percent_65_plus", "type": "quantitative", "format": ".1f",
+        "title": "% Aged 65+"},
+      {"field": "source", "type": "nominal", "title": "Source"}
+    ]
+  }
+}
