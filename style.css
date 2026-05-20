@@ -1,0 +1,258 @@
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: #292524;
+  background: #fafaf8;
+  line-height: 1.6;
+}
+
+/* ===== Layout ===== */
+.page {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ===== Header ===== */
+.site-header {
+  background: linear-gradient(160deg, #292524 0%, #44403c 100%);
+  color: #fafaf8;
+  padding: 3.5rem 1.5rem 3rem;
+  text-align: center;
+}
+
+.site-header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  max-width: 800px;
+  margin: 0 auto 0.6rem;
+}
+
+.site-header .subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #d6d3d1;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* ===== Section ===== */
+.section {
+  padding: 3rem 0;
+  border-bottom: 1px solid #e7e5e4;
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #1c1917;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+}
+
+.section-intro {
+  font-size: 1rem;
+  color: #57534e;
+  max-width: 680px;
+  margin-bottom: 2rem;
+  line-height: 1.65;
+}
+
+/* ===== KPI Cards ===== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2.4rem;
+}
+
+.kpi-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.4rem 1.3rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  border-top: 4px solid #d97706;
+}
+
+.kpi-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #d97706;
+  line-height: 1.2;
+}
+
+.kpi-label {
+  font-size: 0.85rem;
+  color: #78716c;
+  margin-top: 0.3rem;
+  line-height: 1.4;
+}
+
+/* ===== Chart Container ===== */
+.chart-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.2rem 1rem 0.8rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.chart-box .vega-embed {
+  width: 100% !important;
+}
+
+.chart-box .vega-embed canvas,
+.chart-box .vega-embed svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.chart-note {
+  font-size: 0.82rem;
+  color: #78716c;
+  margin-top: 0.3rem;
+  padding: 0 0.2rem;
+}
+
+.chart-error {
+  color: #b91c1c;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* ===== Two-Column Map Row ===== */
+.map-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 800px) {
+  .map-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Box Plot Explanation ===== */
+.info-callout {
+  background: #fffbeb;
+  border-left: 4px solid #d97706;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 1.2rem;
+  font-size: 0.9rem;
+  color: #78350f;
+  line-height: 1.55;
+}
+
+.info-callout strong {
+  color: #92400e;
+}
+
+/* ===== Takeaway Panel (Section 5) ===== */
+.takeaway-panel {
+  background: #fff;
+  border-radius: 10px;
+  padding: 2rem 2rem 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  border-left: 5px solid #d97706;
+}
+
+.takeaway-panel h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1c1917;
+  margin-bottom: 1rem;
+}
+
+.takeaway-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.takeaway-list li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  font-size: 0.95rem;
+  color: #44403c;
+  line-height: 1.5;
+}
+
+.takeaway-icon {
+  flex-shrink: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: #d97706;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  background: #292524;
+  color: #a8a29e;
+  padding: 2rem 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.site-footer .footer-inner {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.site-footer h4 {
+  color: #e7e5e4;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  margin-top: 1rem;
+}
+
+.site-footer h4:first-child {
+  margin-top: 0;
+}
+
+.site-footer p {
+  margin-bottom: 0.3rem;
+}
+
+.site-footer .ack {
+  font-style: italic;
+  color: #d6d3d1;
+}
+
+/* ===== Utility ===== */
+.text-center {
+  text-align: center;
+}
