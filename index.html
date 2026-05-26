@@ -15,7 +15,7 @@
 <header class="site-header">
   <h1>Where Australia Is Ageing</h1>
   <p class="subtitle">
-    Older Australians are not evenly spread across the country. This story explores how population ageing differs between cities, coastal regions, rural inland areas and remote communities.
+    Older Australians are not evenly spread across the country. This story shows how ageing differs between cities, regions and remote communities.
   </p>
 </header>
 
@@ -26,26 +26,26 @@
 <!-- ================================================================== -->
 <section class="section" id="sec1">
   <h2 class="section-title">1. Australia Is Getting Older</h2>
+  <p class="section-takeaway">Australia's older population has grown steadily since 2001.</p>
   <p class="section-intro">
-    Australia's population is ageing steadily. Since 2001, the share of Australians aged 65 and over has risen from 12.6% to 17.3% &mdash; an increase of nearly five percentage points in just over two decades. The number of older Australians has nearly doubled.
+    Australia's population is ageing steadily. Since 2001, the share of Australians aged 65 and over has risen from 12.6% to 17.3%, while the number of older Australians has nearly doubled. This national trend sets the scene for the local and regional differences explored below.
   </p>
-
   <!-- KPI Cards -->
   <div class="kpi-grid">
     <div class="kpi-card">
-      <div class="kpi-number">4.7<span style="font-size:1.2rem;">M</span></div>
+      <div class="kpi-number">4.7<span class="kpi-unit">M</span></div>
       <div class="kpi-label">Australians aged 65+ in 2024</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-number">17.3<span style="font-size:1.2rem;">%</span></div>
+      <div class="kpi-number">17.3<span class="kpi-unit">%</span></div>
       <div class="kpi-label">of the population is 65 or older</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-number">2.4 &rarr; 4.7<span style="font-size:1.2rem;">M</span></div>
+      <div class="kpi-number">2.4 &rarr; 4.7<span class="kpi-unit">M</span></div>
       <div class="kpi-label">older Australians in 2001 vs 2024</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-number">581<span style="font-size:1.2rem;">k</span></div>
+      <div class="kpi-number">581<span class="kpi-unit">k</span></div>
       <div class="kpi-label">people aged 85+ in 2024, more than double the 2001 figure (263k)</div>
     </div>
   </div>
@@ -68,22 +68,24 @@
 <!-- ================================================================== -->
 <section class="section" id="sec2">
   <h2 class="section-title">2. Where Older Australians Live</h2>
+  <p class="section-takeaway">Ageing is geographically uneven across local areas.</p>
   <p class="section-intro">
-    Ageing is not uniform across the country. Some local government areas have fewer than 10% of residents aged 65+, while others exceed 45%. The two maps below tell different but complementary stories &mdash; one shows the <em>proportion</em> of older residents in each LGA, the other shows where the largest <em>numbers</em> of older Australians are concentrated.
+    Ageing is not spread evenly across Australia. Some local government areas have fewer than 10% of residents aged 65+, while others exceed 45%. The choropleth map shows the proportion of older residents in each LGA, while the proportional symbol map shows the absolute number of older residents. Together, they separate places with high ageing shares from places with large older populations.
   </p>
 
-  <div class="map-row">
-    <!-- Vis 4: Choropleth Map -->
-    <div class="chart-box">
-      <div id="vis4"></div>
-      <p class="chart-note">Coastal and regional LGAs &mdash; particularly along the NSW and Victorian coasts &mdash; show the highest proportions of older residents, while remote inland areas and outer-suburban growth corridors tend to have younger age profiles. Source: ABS Regional Population by Age and Sex, 2024; ABS ASGS Edition 3 Digital Boundary Files.</p>
-    </div>
+  <!-- Vis 4: Choropleth Map -->
+  <div class="chart-box map-primary">
+    <div id="vis4"></div>
+    <p class="chart-note">Coastal and regional LGAs &ndash; particularly along the NSW and Victorian coasts &ndash; show some of the highest proportions of older residents. Blue areas are below the national average of 17.3%, while orange areas are above it. Remote inland areas and some outer-suburban growth corridors tend to have younger age profiles. Source: ABS Regional Population by Age and Sex, 2024; ABS ASGS Edition 3 Digital Boundary Files.</p>
+  </div>
 
-    <!-- Vis 5: Proportional Symbol Map -->
-    <div class="chart-box">
-      <div id="vis5"></div>
-      <p class="chart-note">The largest absolute numbers of older Australians are concentrated in capital cities and major coastal centres. While some regional LGAs have high <em>percentages</em> of older residents, the greatest <em>numbers</em> are in metropolitan areas. Circle size is proportional to the number of people aged 65+. Source: ABS Regional Population by Age and Sex, 2024.</p>
+  <!-- Vis 5: Proportional Symbol Map -->
+  <div class="chart-box map-secondary">
+    <div class="map-explainer">
+      This second map switches from percentages to counts. Large circles show where the largest numbers of older Australians live.
     </div>
+    <div id="vis5"></div>
+    <p class="chart-note">The largest absolute numbers of older Australians are concentrated in capital cities and major coastal centres. While some regional LGAs have high percentages of older residents, the greatest numbers are in metropolitan areas. Circle size is proportional to the number of people aged 65+. Source: ABS Regional Population by Age and Sex, 2024.</p>
   </div>
 </section>
 
@@ -92,14 +94,15 @@
 <!-- ================================================================== -->
 <section class="section" id="sec3">
   <h2 class="section-title">3. Cities, Regions and Remote Areas Differ</h2>
+  <p class="section-takeaway">Regional and state patterns show different ageing profiles.</p>
   <p class="section-intro">
-    The experience of ageing differs sharply depending on where you live. Some regional coastal communities have among the oldest age profiles in the country, while remote areas tend to have younger populations &mdash; reflecting different economic opportunities, migration patterns and health outcomes.
+    The local patterns in the maps also appear at broader regional and state levels. Some coastal, rural and regional areas have older age profiles, while very remote areas tend to have younger populations. This section compares LGA rankings, state and territory patterns, and remoteness categories to show that ageing varies by place type.
   </p>
 
-  <!-- Vis 6: Top 20 LGAs Bar -->
+  <!-- Vis 6: Top LGAs by 65+ share -->
   <div class="chart-box">
     <div id="vis6"></div>
-    <p class="chart-note">Small coastal and rural LGAs dominate the top 20. Many are popular retirement and sea-change destinations where older Australians relocate. Several are in Tasmania, which has the highest state-level proportion of older residents. Source: ABS Regional Population by Age and Sex, 2024.</p>
+    <p class="chart-note">Small coastal and rural LGAs dominate the top rankings. Queenscliffe and Victor Harbor stand out, which is consistent with the older age profiles often seen in retirement and sea-change communities. Source: ABS Regional Population by Age and Sex, 2024.</p>
   </div>
 
   <!-- Vis 7: State Dot Plot -->
@@ -120,29 +123,27 @@
 <!-- ================================================================== -->
 <section class="section" id="sec4">
   <h2 class="section-title">4. Not All Older Populations Look the Same</h2>
+  <p class="section-takeaway">The 65+ population includes very different age groups.</p>
   <p class="section-intro">
-    Looking beyond a single percentage tells a richer story. The age structure <em>within</em> the 65+ population &mdash; the balance of 65&ndash;74 year-olds, 75&ndash;84 year-olds and those 85+ &mdash; varies by state and has important implications for aged care, health services and community planning.
+    The 65+ population is not one single group. People aged 65&ndash;74, 75&ndash;84 and 85+ may represent different stages of later life, and the balance between these groups varies across states and local areas. This helps show why local planning needs to consider not only how many older residents there are, but also which older age groups are growing.
   </p>
 
   <!-- Vis 9: State Age Group Breakdown -->
   <div class="chart-box">
     <div id="vis9"></div>
-    <p class="chart-note">In most states, the 65&ndash;74 age group (the youngest-old) makes up over half of the 65+ population. South Australia has the highest share of people aged 85+ among its older population. These differences in composition affect the types of services each state needs &mdash; from active retirement communities to high-care residential facilities. Source: ABS Regional Population by Age and Sex, 2024.</p>
+    <p class="chart-note">Every state and territory has older residents across the 65&ndash;74, 75&ndash;84 and 85+ groups, but the balance between these groups differs. This matters because each age band can be linked to different levels of independence, care and community support needs. Source: ABS Regional Population by Age and Sex, 2024.</p>
   </div>
 
   <!-- Vis 10: Box Plot -->
-  <div class="info-callout">
-    <strong>How to read a box plot:</strong> Each box represents the range of median ages across LGAs within a state. The line inside the box is the <strong>median</strong> (the middle LGA). The box shows the <strong>middle 50%</strong> of LGAs. The whiskers extend to the <strong>minimum and maximum</strong> values. The wider the box, the more variation there is among LGAs within that state.
-  </div>
   <div class="chart-box">
     <div id="vis10"></div>
-    <p class="chart-note">Tasmania has the highest median state-level median age and the narrowest spread &mdash; meaning most of its LGAs are consistently older. Larger states like Queensland and New South Wales show wide variation, with LGAs ranging from median ages in the low 30s to over 60. Source: ABS Median Age, Sex Ratio and Broad Age Groups, by LGA, 2024.</p>
+    <p class="chart-note">This chart shows variation in median age across LGAs within each state and territory. Tasmania and South Australia generally have older LGA profiles, while larger states such as Queensland, New South Wales and Victoria show wider local variation. Source: ABS Median Age, Sex Ratio and Broad Age Groups by LGA, 2024. ACT appears as a thin line because it has very little LGA-level variation in this dataset.</p>
   </div>
 
   <!-- Vis 11: Top 10 by % 85+ -->
   <div class="chart-box">
     <div id="vis11"></div>
-    <p class="chart-note">The oldest-old (85+) are concentrated in a small number of LGAs. These communities face the highest demand for aged care, home support and healthcare services per capita. Several are in regional Victoria and New South Wales. Source: ABS Regional Population by Age and Sex, 2024.</p>
+    <p class="chart-note">The oldest-old group is concentrated in a small number of local areas. A higher 85+ share may indicate stronger local need for age-friendly housing, community support and aged care planning. Source: ABS Regional Population by Age and Sex, 2024.</p>
   </div>
 </section>
 
@@ -151,14 +152,15 @@
 <!-- ================================================================== -->
 <section class="section" id="sec5">
   <h2 class="section-title">5. What This Means</h2>
+  <p class="section-takeaway">Numbers, proportions, and older-age structure tell different stories.</p>
   <p class="section-intro">
-    Median age and the proportion of older residents are closely related, but the relationship is not linear &mdash; and the variation between LGAs is striking. Each dot below is a local government area. Its position shows where it sits on the ageing spectrum, and its size reflects its total population.
+    The final section brings the story together. Percentages and population counts can tell different stories: some small areas have high older-population shares, while larger population centres may contain many older residents even if their percentage is lower. Together, the charts show why ageing should be understood as both a national trend and a local planning issue.
   </p>
 
   <!-- Vis 12: Scatter Bubble -->
   <div class="chart-box">
     <div id="vis12"></div>
-    <p class="chart-note">LGAs with median ages above 50 consistently have more than 25% of residents aged 65+. Large metropolitan LGAs (larger bubbles) tend to cluster near the national average, while many small regional LGAs occupy the upper-right corner. Each state has a distinct ageing footprint. Source: ABS Regional Population by Age and Sex, 2024; ABS Median Age by LGA, 2024.</p>
+    <p class="chart-note">Each dot is an LGA. Further right means a larger total population; higher up means a higher share aged 65+. This helps show why both percentages and absolute numbers matter. Source: ABS Regional Population by Age and Sex, 2024; ABS Median Age by LGA, 2024.</p>
   </div>
 
   <!-- Takeaway Panel -->
@@ -167,15 +169,15 @@
     <ul class="takeaway-list">
       <li>
         <span class="takeaway-icon">1</span>
-        <span><strong>Australia is ageing nationally.</strong> The proportion of people aged 65+ has risen from 12.6% to 17.3% in 24 years. The 85+ population has more than doubled, bringing growing demand for aged care, healthcare and age-friendly infrastructure.</span>
+        <span><strong>Australia is ageing nationally.</strong> The proportion of people aged 65+ has risen from 12.6% to 17.3% since 2001. The 85+ population has more than doubled, adding pressure for aged care, healthcare and age-friendly infrastructure.</span>
       </li>
       <li>
         <span class="takeaway-icon">2</span>
-        <span><strong>Ageing is geographically uneven.</strong> Coastal and regional LGAs have some of the highest proportions of older residents, while remote areas have the lowest. Inner regional areas report 21.8% aged 65+, compared with just 10.9% in very remote communities.</span>
+        <span><strong>Ageing is geographically uneven.</strong> Coastal and regional LGAs have some of the highest proportions of older residents, while very remote areas are younger in this dataset. Local planning needs will therefore differ sharply between communities.</span>
       </li>
       <li>
         <span class="takeaway-icon">3</span>
-        <span><strong>Numbers, proportions and age structure tell different stories.</strong> Metropolitan areas hold the largest absolute numbers of older Australians, even though their <em>proportion</em> is near the national average. Meanwhile, the mix of younger-old (65&ndash;74) and oldest-old (85+) varies significantly by location &mdash; and each pattern demands a different policy response.</span>
+        <span><strong>Numbers, proportions and age structure tell different stories.</strong> Metropolitan areas can contain many older residents even when their ageing share is moderate. The mix of 65&ndash;74, 75&ndash;84 and 85+ residents also affects the type of support each place may need.</span>
       </li>
     </ul>
   </div>
@@ -186,22 +188,23 @@
 <!-- ===== FOOTER ===== -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <h4>Data Sources</h4>
-    <p>
-      Australian Bureau of Statistics (ABS), <em>Regional Population by Age and Sex, 2024</em> &mdash; Population estimates by age and sex, by LGA, 2001 to 2024.<br>
-      Australian Bureau of Statistics (ABS), <em>ASGS Edition 3 Digital Boundary Files, 2024</em> &mdash; Local Government Areas 2024 Shapefile, GDA2020.<br>
-      Australian Bureau of Statistics (ABS), <em>Median Age, Sex Ratio and Broad Age Groups, by LGA, 2024.</em><br>
-      Australian Institute of Health and Welfare (AIHW), <em>Rural and Remote Health, 2023.</em>
-    </p>
+    <div class="footer-grid">
+      <div>
+        <h4>Data Sources</h4>
+        <p>
+          <a href="https://www.abs.gov.au/statistics/people/population/regional-population-age-and-sex/latest-release">Australian Bureau of Statistics (ABS), Regional Population by Age and Sex, 2024.</a><br>
+          <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files">ABS, ASGS Edition 3 Digital Boundary Files, 2024.</a><br>
+          <a href="https://www.aihw.gov.au/reports/older-people/older-australians/contents/demographic-profile">Australian Institute of Health and Welfare (AIHW), Rural and Remote Health, 2023.</a>
+        </p>
+      </div>
+      <div>
+        <h4>Author</h4>
+        <p>Yuanzhe Chen</p>
 
-    <h4>Author &amp; Date</h4>
-    <p>Created for FIT2179 Data Visualisation 2, Monash University, Semester 1, 2026. Published May 2026.</p>
-
-    <h4>AI Acknowledgement</h4>
-    <p class="ack">This webpage and all Vega-Lite visualisations were developed with the assistance of generative AI (Claude Code, Anthropic). The AI tool was used to write HTML, CSS, JavaScript and Vega-Lite JSON specifications based on design direction and data provided by the author. All data sources are real, publicly available datasets from the ABS and AIHW. The author reviewed, tested and refined all outputs.</p>
-
-    <h4>License</h4>
-    <p>This work is made available under the <a href="https://creativecommons.org/licenses/by/4.0/" style="color:#d6d3d1;">Creative Commons Attribution 4.0 International</a> license. Data from the ABS and AIHW is used under applicable open data terms.</p>
+        <h4>Date</h4>
+        <p>26 May 2026</p>
+      </div>
+    </div>
   </div>
 </footer>
 
