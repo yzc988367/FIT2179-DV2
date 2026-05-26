@@ -1,75 +1,52 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Percentage of Population Aged 65+ by Local Government Area, 2024",
-    "subtitle": "National average: 17.3% aged 65+ in 2024",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
-    "anchor": "start"
-  },
+  "title": "Percentage of Population Aged 65+ by Local Government Area, 2024",
   "width": "container",
-  "height": 640,
+  "height": 500,
   "data": {
     "url": "data/australia_lga.topojson",
     "format": {"type": "topojson", "feature": "australia_lga"}
   },
   "projection": {"type": "mercator", "center": [133.5, -27]},
-  "layer": [
+  "transform": [
     {
-      "mark": {
-        "type": "geoshape",
-        "fill": "#e7e5e4",
-        "stroke": "#ffffff",
-        "strokeWidth": 0.25
-      }
+      "calculate": "datum.properties.LGA_CODE24",
+      "as": "LGA_CODE"
     },
     {
-      "transform": [
-        {"calculate": "datum.properties.LGA_CODE24", "as": "LGA_CODE"},
-        {
-          "lookup": "LGA_CODE",
-          "from": {
-            "data": {"url": "data/older_population_lga.csv"},
-            "key": "lga_code",
-            "fields": ["percent_65_plus", "pop_65_plus", "lga_name", "state"]
-          }
-        }
-      ],
-      "mark": {
-        "type": "geoshape",
-        "stroke": "#ffffff",
-        "strokeWidth": 0.25
-      },
-      "encoding": {
-        "color": {
-          "field": "percent_65_plus",
-          "type": "quantitative",
-          "title": "% aged 65+",
-          "scale": {
-            "scheme": "blueorange",
-            "domain": [0, 55],
-            "domainMid": 17.28
-          },
-          "legend": {
-            "format": ".0f",
-            "orient": "bottom-right",
-            "gradientLength": 220,
-            "labelFontSize": 13,
-            "titleFontSize": 14
-          }
-        },
-        "tooltip": [
-          {"field": "properties.LGA_NAME24", "type": "nominal", "title": "LGA"},
-          {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "percent_65_plus", "type": "quantitative", "format": ".1f", "title": "% aged 65+"},
-          {"field": "pop_65_plus", "type": "quantitative", "format": ",", "title": "People 65+"}
-        ]
+      "lookup": "LGA_CODE",
+      "from": {
+        "data": {"url": "data/older_population_lga.csv"},
+        "key": "lga_code",
+        "fields": ["percent_65_plus", "pop_65_plus", "lga_name", "state"]
       }
     }
   ],
-  "config": {
-    "font": "Inter, Segoe UI, Arial, sans-serif",
-    "legend": {"labelColor": "#44403c", "titleColor": "#44403c"},
-    "view": {"stroke": null}
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 0.2
+  },
+  "encoding": {
+    "color": {
+      "field": "percent_65_plus",
+      "type": "quantitative",
+      "title": "% Aged 65+",
+      "scale": {"scheme": "oranges", "domain": [0, 55]},
+      "legend": {
+        "format": ".0f",
+        "orient": "bottom-right",
+        "labelFontSize": 11,
+        "titleFontSize": 12
+      }
+    },
+    "tooltip": [
+      {"field": "properties.LGA_NAME24", "type": "nominal", "title": "LGA"},
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "percent_65_plus", "type": "quantitative", "format": ".1f",
+        "title": "% Aged 65+"},
+      {"field": "pop_65_plus", "type": "quantitative", "format": ",",
+        "title": "People 65+"}
+    ]
   }
 }

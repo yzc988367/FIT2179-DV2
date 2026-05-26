@@ -1,78 +1,52 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "LGA Population Size vs Share Aged 65+, 2024",
-    "subtitle": "Large populations and high ageing shares are different local planning challenges",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
-    "anchor": "start"
-  },
+  "title": "LGA Ageing Profile: Median Age vs Share of Residents Aged 65+, 2024",
   "width": "container",
-  "height": 470,
+  "height": 420,
   "data": {"url": "data/older_population_lga.csv"},
-  "layer": [
-    {
-      "data": {"values": [{"national_avg": 17.28, "label": "National average 17.3%"}]},
-      "mark": {"type": "rule", "color": "#78716c", "strokeDash": [5, 5], "strokeWidth": 1.6},
-      "encoding": {"y": {"field": "national_avg", "type": "quantitative"}}
+  "mark": {
+    "type": "circle",
+    "opacity": 0.6,
+    "stroke": "white",
+    "strokeWidth": 0.5
+  },
+  "encoding": {
+    "x": {
+      "field": "median_age",
+      "type": "quantitative",
+      "title": "Median Age (years)",
+      "scale": {"domain": [20, 65]},
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
     },
-    {
-      "data": {"values": [{"x": 1300, "national_avg": 17.28, "label": "National average 17.3%"}]},
-      "mark": {"type": "text", "align": "left", "baseline": "bottom", "dy": -5, "fontSize": 12, "color": "#57534e"},
-      "encoding": {
-        "x": {"field": "x", "type": "quantitative"},
-        "y": {"field": "national_avg", "type": "quantitative"},
-        "text": {"field": "label"}
-      }
+    "y": {
+      "field": "percent_65_plus",
+      "type": "quantitative",
+      "title": "% Aged 65+",
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
     },
-    {
-      "mark": {"type": "circle", "opacity": 0.68, "stroke": "#ffffff", "strokeWidth": 0.6},
-      "encoding": {
-        "x": {
-          "field": "total_population",
-          "type": "quantitative",
-          "title": "Total LGA population (log scale)",
-          "scale": {"type": "log"},
-          "axis": {"grid": true, "gridDash": [2, 4], "format": "~s", "labelFontSize": 13, "titleFontSize": 14}
-        },
-        "y": {
-          "field": "percent_65_plus",
-          "type": "quantitative",
-          "title": "% aged 65+",
-          "scale": {"domain": [0, 55]},
-          "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14}
-        },
-        "size": {
-          "field": "pop_65_plus",
-          "type": "quantitative",
-          "title": "People 65+",
-          "scale": {"type": "sqrt", "range": [20, 650]},
-          "legend": {"labelFontSize": 13, "titleFontSize": 14, "format": "~s"}
-        },
-        "color": {
-          "field": "state",
-          "type": "nominal",
-          "title": "State",
-          "scale": {
-            "range": ["#9a3412", "#b45309", "#ca8a04", "#4d7c0f", "#0f766e", "#0369a1", "#4338ca", "#7e22ce", "#a21caf"]
-          },
-          "legend": {"labelFontSize": 12, "titleFontSize": 13}
-        },
-        "tooltip": [
-          {"field": "lga_name", "type": "nominal", "title": "LGA"},
-          {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "total_population", "type": "quantitative", "format": ",", "title": "Total population"},
-          {"field": "pop_65_plus", "type": "quantitative", "format": ",", "title": "People 65+"},
-          {"field": "percent_65_plus", "type": "quantitative", "format": ".1f", "title": "% aged 65+"},
-          {"field": "median_age", "type": "quantitative", "format": ".1f", "title": "Median age"}
-        ]
-      }
-    }
-  ],
-  "config": {
-    "font": "Inter, Segoe UI, Arial, sans-serif",
-    "axis": {"domainColor": "#a8a29e", "tickColor": "#a8a29e", "labelColor": "#44403c", "titleColor": "#44403c"},
-    "legend": {"labelColor": "#44403c", "titleColor": "#44403c"},
-    "view": {"stroke": null}
+    "size": {
+      "field": "total_population",
+      "type": "quantitative",
+      "title": "Total LGA Population",
+      "scale": {"type": "sqrt", "range": [8, 300]},
+      "legend": {"labelFontSize": 11, "titleFontSize": 12}
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State",
+      "scale": {"scheme": "category10"},
+      "legend": {"labelFontSize": 11, "titleFontSize": 12}
+    },
+    "tooltip": [
+      {"field": "lga_name", "type": "nominal", "title": "LGA"},
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "median_age", "type": "quantitative", "format": ".1f",
+        "title": "Median Age"},
+      {"field": "percent_65_plus", "type": "quantitative", "format": ".1f",
+        "title": "% Aged 65+"},
+      {"field": "total_population", "type": "quantitative", "format": ",",
+        "title": "Total Population"}
+    ]
   }
 }

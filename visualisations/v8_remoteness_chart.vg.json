@@ -1,14 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Proportion of Population Aged 65+ by Remoteness Category, 2023",
-    "subtitle": "AIHW reports inner regional areas as the oldest remoteness category",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
-    "anchor": "start"
-  },
+  "title": "Proportion of Population Aged 65+ by Remoteness Category, 2023",
   "width": "container",
-  "height": 310,
+  "height": 280,
   "data": {"url": "data/older_population_remoteness.csv"},
   "transform": [
     {
@@ -16,38 +10,27 @@
       "as": "label"
     }
   ],
-  "mark": {"type": "bar", "cornerRadiusEnd": 3},
+  "mark": {"type": "bar", "color": "#d97706"},
   "encoding": {
     "y": {
       "field": "label",
       "type": "nominal",
       "sort": "-x",
       "title": null,
-      "axis": {"labelFontSize": 13, "labelLimit": 260}
+      "axis": {"labelFontSize": 12}
     },
     "x": {
       "field": "percent_65_plus",
       "type": "quantitative",
-      "title": "% aged 65+",
-      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14},
+      "title": "% Aged 65+",
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12},
       "scale": {"domain": [0, 25]}
-    },
-    "color": {
-      "field": "percent_65_plus",
-      "type": "quantitative",
-      "title": "% aged 65+",
-      "scale": {"scheme": "oranges", "domain": [0, 25]},
-      "legend": null
     },
     "tooltip": [
       {"field": "remoteness", "type": "nominal", "title": "Category"},
-      {"field": "percent_65_plus", "type": "quantitative", "format": ".1f", "title": "% aged 65+"},
+      {"field": "percent_65_plus", "type": "quantitative", "format": ".1f",
+        "title": "% Aged 65+"},
       {"field": "source", "type": "nominal", "title": "Source"}
     ]
-  },
-  "config": {
-    "font": "Inter, Segoe UI, Arial, sans-serif",
-    "axis": {"domainColor": "#a8a29e", "tickColor": "#a8a29e", "labelColor": "#44403c", "titleColor": "#44403c"},
-    "view": {"stroke": null}
   }
 }

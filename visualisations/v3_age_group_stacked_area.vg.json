@@ -1,14 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Growth of Older Age Groups, 2001-2024",
-    "subtitle": "Population counts by older age band",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
-    "anchor": "start"
-  },
+  "title": "Growth of Older Age Groups, 2001–2024",
   "width": "container",
-  "height": 390,
+  "height": 360,
   "data": {"url": "data/ageing_trend.csv"},
   "transform": [
     {
@@ -16,45 +10,41 @@
       "as": ["age_group", "population"]
     },
     {
-      "calculate": "replace(replace(replace(datum.age_group, 'pop_65_74', '65-74'), 'pop_75_84', '75-84'), 'pop_85_plus', '85+')",
+      "calculate": "replace(replace(replace(datum.age_group, 'pop_65_74', '65–74'), 'pop_75_84', '75–84'), 'pop_85_plus', '85+')",
       "as": "age_label"
     }
   ],
-  "mark": {"type": "area", "interpolate": "monotone"},
+  "mark": "area",
   "encoding": {
     "x": {
       "field": "year",
       "type": "temporal",
       "title": null,
-      "axis": {"grid": false, "labelFontSize": 13, "titleFontSize": 14}
+      "axis": {"grid": false, "labelFontSize": 12}
     },
     "y": {
       "field": "population",
       "type": "quantitative",
       "title": "Population",
       "stack": true,
-      "axis": {"grid": true, "gridDash": [2, 4], "format": "~s", "labelFontSize": 13, "titleFontSize": 14}
+      "axis": {"grid": true, "gridDash": [2, 4], "format": "~s", "labelFontSize": 12}
     },
     "color": {
       "field": "age_label",
       "type": "nominal",
-      "title": "Age group",
-      "sort": ["65-74", "75-84", "85+"],
+      "title": "Age Group",
+      "sort": ["65–74", "75–84", "85+"],
       "scale": {
-        "domain": ["65-74", "75-84", "85+"],
-        "range": ["#fbbf24", "#f97316", "#991b1b"]
+        "domain": ["65–74", "75–84", "85+"],
+        "range": ["#fdbb84", "#e34a33", "#800026"]
       },
-      "legend": {"orient": "top", "labelFontSize": 13, "titleFontSize": 14}
+      "legend": {"orient": "top", "labelFontSize": 12}
     },
     "tooltip": [
       {"field": "year", "type": "temporal", "format": "%Y", "title": "Year"},
-      {"field": "age_label", "type": "nominal", "title": "Age group"},
-      {"field": "population", "type": "quantitative", "format": ",", "title": "Population"}
+      {"field": "age_label", "type": "nominal", "title": "Age Group"},
+      {"field": "population", "type": "quantitative", "format": ",",
+        "title": "Population"}
     ]
-  },
-  "config": {
-    "font": "Inter, Segoe UI, Arial, sans-serif",
-    "axis": {"domainColor": "#a8a29e", "tickColor": "#a8a29e", "labelColor": "#44403c", "titleColor": "#44403c"},
-    "view": {"stroke": null}
   }
 }

@@ -1,17 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Top 10 LGAs by Share of Residents Aged 85+, 2024",
-    "subtitle": "Oldest-old shares are highest in a small group of local areas",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
-    "anchor": "start"
-  },
+  "title": "Top 10 LGAs by Share of Residents Aged 85+, 2024",
   "width": "container",
-  "height": 360,
+  "height": 320,
   "data": {"url": "data/older_population_lga.csv"},
   "transform": [
-    {"calculate": "datum.pop_85_plus / datum.total_population * 100", "as": "percent_85_plus"},
+    {
+      "calculate": "datum.pop_85_plus / datum.total_population * 100",
+      "as": "percent_85_plus"
+    },
     {
       "window": [{"op": "row_number", "as": "rank"}],
       "sort": [{"field": "percent_85_plus", "order": "descending"}]
@@ -19,33 +16,30 @@
     {"filter": "datum.rank <= 10"},
     {"calculate": "datum.lga_name + ', ' + datum.state", "as": "label"}
   ],
-  "mark": {"type": "bar", "cornerRadiusEnd": 3, "color": "#991b1b"},
+  "mark": {"type": "bar", "color": "#800026"},
   "encoding": {
     "y": {
       "field": "label",
       "type": "nominal",
       "sort": "-x",
       "title": null,
-      "axis": {"labelFontSize": 13, "labelLimit": 300}
+      "axis": {"labelFontSize": 11, "labelLimit": 200}
     },
     "x": {
       "field": "percent_85_plus",
       "type": "quantitative",
-      "title": "% aged 85+",
-      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14},
-      "scale": {"domain": [0, 8]}
+      "title": "% Aged 85+",
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
     },
     "tooltip": [
       {"field": "lga_name", "type": "nominal", "title": "LGA"},
       {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "percent_85_plus", "type": "quantitative", "format": ".1f", "title": "% aged 85+"},
-      {"field": "pop_85_plus", "type": "quantitative", "format": ",", "title": "People 85+"},
-      {"field": "median_age", "type": "quantitative", "format": ".1f", "title": "Median age"}
+      {"field": "percent_85_plus", "type": "quantitative", "format": ".1f",
+        "title": "% Aged 85+"},
+      {"field": "pop_85_plus", "type": "quantitative", "format": ",",
+        "title": "People 85+"},
+      {"field": "median_age", "type": "quantitative", "format": ".1f",
+        "title": "Median Age"}
     ]
-  },
-  "config": {
-    "font": "Inter, Segoe UI, Arial, sans-serif",
-    "axis": {"domainColor": "#a8a29e", "tickColor": "#a8a29e", "labelColor": "#44403c", "titleColor": "#44403c"},
-    "view": {"stroke": null}
   }
 }
