@@ -1,34 +1,71 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Australians Aged 65 and Over, 2001–2024",
-  "width": "container",
-  "height": 360,
-  "data": {"url": "data/ageing_trend.csv"},
-  "mark": {
-    "type": "line",
-    "point": {"filled": true, "size": 40},
-    "color": "#d97706",
-    "strokeWidth": 2.5
+  "title": {
+    "text": "Australians Aged 65 and Over, 2001-2024",
+    "subtitle": "Share of the national population aged 65+",
+    "fontSize": 19,
+    "subtitleFontSize": 14,
+    "anchor": "start"
   },
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "temporal",
-      "title": null,
-      "axis": {"grid": false, "labelFontSize": 12}
+  "width": "container",
+  "height": 390,
+  "data": {"url": "data/ageing_trend.csv"},
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": {"filled": true, "size": 48},
+        "color": "#c2410c",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "temporal",
+          "title": null,
+          "axis": {"grid": false, "labelFontSize": 13, "titleFontSize": 14}
+        },
+        "y": {
+          "field": "percent_65_plus",
+          "type": "quantitative",
+          "title": "% of population aged 65+",
+          "axis": {
+            "grid": true,
+            "gridDash": [2, 4],
+            "labelFontSize": 13,
+            "titleFontSize": 14
+          },
+          "scale": {"domain": [10, 20]}
+        },
+        "tooltip": [
+          {"field": "year", "type": "temporal", "format": "%Y", "title": "Year"},
+          {"field": "percent_65_plus", "type": "quantitative", "format": ".2f", "title": "% Aged 65+"},
+          {"field": "pop_65_plus", "type": "quantitative", "format": ",", "title": "People 65+"}
+        ]
+      }
     },
-    "y": {
-      "field": "percent_65_plus",
-      "type": "quantitative",
-      "title": "% of population aged 65+",
-      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12},
-      "scale": {"domain": [10, 20]}
-    },
-    "tooltip": [
-      {"field": "year", "type": "temporal", "format": "%Y", "title": "Year"},
-      {"field": "percent_65_plus", "type": "quantitative", "format": ".2f", "title": "% Aged 65+"},
-      {"field": "pop_65_plus", "type": "quantitative", "format": ",",
-        "title": "People 65+"}
-    ]
+    {
+      "transform": [{"filter": "datum.year == 2024"}],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "dy": -10,
+        "fontSize": 13,
+        "fontWeight": 700,
+        "color": "#7c2d12",
+        "text": "17.3% in 2024"
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "temporal"},
+        "y": {"field": "percent_65_plus", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {
+    "font": "Inter, Segoe UI, Arial, sans-serif",
+    "axis": {"domainColor": "#a8a29e", "tickColor": "#a8a29e", "labelColor": "#44403c", "titleColor": "#44403c"},
+    "view": {"stroke": null}
   }
 }

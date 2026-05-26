@@ -1,8 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Number of People Aged 65+ by Local Government Area, 2024",
+  "title": {
+    "text": "Number of People Aged 65+ by Local Government Area, 2024",
+    "subtitle": "Circle size shows the absolute number of older residents",
+    "fontSize": 19,
+    "subtitleFontSize": 14,
+    "anchor": "start"
+  },
   "width": "container",
-  "height": 500,
+  "height": 560,
   "projection": {"type": "mercator", "center": [133.5, -27]},
   "layer": [
     {
@@ -12,19 +18,19 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#e8e8e8",
-        "stroke": "white",
-        "strokeWidth": 0.2
+        "fill": "#e7e5e4",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.25
       }
     },
     {
       "data": {"url": "data/lga_centroids.csv"},
       "mark": {
         "type": "circle",
-        "opacity": 0.65,
-        "color": "#d9480f",
-        "stroke": "white",
-        "strokeWidth": 0.3
+        "opacity": 0.7,
+        "color": "#c2410c",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.7
       },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
@@ -33,22 +39,25 @@
           "field": "pop_65_plus",
           "type": "quantitative",
           "title": "People 65+",
-          "scale": {"type": "sqrt", "range": [1, 350], "domain": [0, 450000]},
+          "scale": {"type": "sqrt", "range": [8, 900], "domain": [0, 450000]},
           "legend": {
             "orient": "bottom-right",
             "format": "~s",
-            "labelFontSize": 11,
-            "titleFontSize": 12
+            "labelFontSize": 13,
+            "titleFontSize": 14
           }
         },
         "tooltip": [
           {"field": "lga_name", "type": "nominal", "title": "LGA"},
-          {"field": "pop_65_plus", "type": "quantitative", "format": ",",
-            "title": "Population 65+"},
-          {"field": "percent_65_plus", "type": "quantitative", "format": ".1f",
-            "title": "% Aged 65+"}
+          {"field": "pop_65_plus", "type": "quantitative", "format": ",", "title": "Population 65+"},
+          {"field": "percent_65_plus", "type": "quantitative", "format": ".1f", "title": "% aged 65+"}
         ]
       }
     }
-  ]
+  ],
+  "config": {
+    "font": "Inter, Segoe UI, Arial, sans-serif",
+    "legend": {"labelColor": "#44403c", "titleColor": "#44403c"},
+    "view": {"stroke": null}
+  }
 }
