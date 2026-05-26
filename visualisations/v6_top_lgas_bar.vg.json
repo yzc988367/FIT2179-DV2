@@ -1,41 +1,76 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Top 20 LGAs with the Highest Proportion of Residents Aged 65+, 2024",
+  "title": {
+    "text": "Top LGAs by Share of Residents Aged 65+, 2024",
+    "subtitle": "Top 15 local government areas ranked by the percentage of residents aged 65+",
+    "fontSize": 19,
+    "subtitleFontSize": 14,
+    "anchor": "start"
+  },
   "width": "container",
-  "height": 450,
+  "height": 430,
   "data": {"url": "data/older_population_lga.csv"},
   "transform": [
     {
-      "window": [{"op": "row_number", "as": "rank"}],
-      "sort": [{"field": "percent_65_plus", "order": "descending"}]
+      "calculate": "toNumber(datum.percent_65_plus)",
+      "as": "percent_65_plus_num"
     },
-    {"filter": "datum.rank <= 20"},
-    {"calculate": "datum.lga_name + ', ' + datum.state", "as": "label"}
+    {
+      "window": [{"op": "row_number", "as": "rank"}],
+      "sort": [
+        {"field": "percent_65_plus_num", "order": "descending"},
+        {"field": "lga_name", "order": "ascending"}
+      ]
+    },
+    {"filter": "datum.rank <= 15"},
+    {"calculate": "datum.lga_name + ', ' + datum.state", "as": "label"},
+    {"calculate": "format(datum.percent_65_plus_num, '.1f') + '%'", "as": "percent_label"}
   ],
-  "mark": {"type": "bar", "color": "#d97706"},
   "encoding": {
     "y": {
       "field": "label",
       "type": "nominal",
-      "sort": "-x",
+      "sort": {"field": "percent_65_plus_num", "order": "descending"},
       "title": null,
-      "axis": {"labelFontSize": 11, "labelLimit": 200}
+      "axis": {"labelFontSize": 13, "labelLimit": 300}
     },
     "x": {
-      "field": "percent_65_plus",
+      "field": "percent_65_plus_num",
       "type": "quantitative",
-      "title": "% Aged 65+",
-      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
+      "title": "% aged 65+",
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14},
+      "scale": {"domain": [0, 55]}
     },
     "tooltip": [
       {"field": "lga_name", "type": "nominal", "title": "LGA"},
       {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "percent_65_plus", "type": "quantitative", "format": ".1f",
-        "title": "% Aged 65+"},
-      {"field": "pop_65_plus", "type": "quantitative", "format": ",",
-        "title": "People 65+"},
-      {"field": "median_age", "type": "quantitative", "format": ".1f",
-        "title": "Median Age"}
+      {"field": "percent_65_plus_num", "type": "quantitative", "format": ".1f", "title": "% aged 65+"},
+      {"field": "pop_65_plus", "type": "quantitative", "format": ",", "title": "People 65+"},
+      {"field": "median_age", "type": "quantitative", "format": ".1f", "title": "Median age"}
     ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusEnd": 3, "color": "#d97706"}
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 7,
+        "fontSize": 13,
+        "fontWeight": 700,
+        "color": "#44403c"
+      },
+      "encoding": {
+        "text": {"field": "percent_label", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "font": "Inter, Segoe UI, Arial, sans-serif",
+    "axis": {"domainColor": "#a8a29e", "tickColor": "#a8a29e", "labelColor": "#44403c", "titleColor": "#44403c"},
+    "view": {"stroke": null}
   }
 }

@@ -1,32 +1,157 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "How Median Age Varies Across LGAs Within Each State, 2024",
+  "title": {
+    "text": "How Median Age Varies Across LGAs Within Each State, 2024",
+    "subtitle": "Each box summarises the spread of LGA median ages in one state or territory",
+    "fontSize": 19,
+    "subtitleFontSize": 14,
+    "anchor": "start"
+  },
   "width": "container",
-  "height": 360,
+  "height": 430,
   "data": {"url": "data/older_population_lga.csv"},
-  "mark": {"type": "boxplot", "extent": "min-max", "size": 28},
+  "transform": [
+    {
+      "aggregate": [
+        {"op": "min", "field": "median_age", "as": "min_median_age"},
+        {"op": "q1", "field": "median_age", "as": "q1_median_age"},
+        {"op": "median", "field": "median_age", "as": "median_median_age"},
+        {"op": "q3", "field": "median_age", "as": "q3_median_age"},
+        {"op": "max", "field": "median_age", "as": "max_median_age"}
+      ],
+      "groupby": ["state"]
+    }
+  ],
   "encoding": {
     "x": {
       "field": "state",
       "type": "nominal",
       "title": null,
-      "sort": "-y",
-      "axis": {"labelAngle": -35, "labelFontSize": 11}
-    },
-    "y": {
-      "field": "median_age",
-      "type": "quantitative",
-      "title": "Median Age (years)",
-      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
-    },
-    "color": {
-      "field": "state",
-      "type": "nominal",
-      "legend": null,
-      "scale": {"scheme": "category10"}
+      "sort": {"field": "median_median_age", "order": "descending"},
+      "axis": {"labelAngle": -30, "labelFontSize": 12, "labelLimit": 130}
     },
     "tooltip": [
-      {"field": "state", "type": "nominal", "title": "State"}
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "min_median_age", "type": "quantitative", "format": ".1f", "title": "Minimum"},
+      {"field": "q1_median_age", "type": "quantitative", "format": ".1f", "title": "Q1"},
+      {"field": "median_median_age", "type": "quantitative", "format": ".1f", "title": "Median"},
+      {"field": "q3_median_age", "type": "quantitative", "format": ".1f", "title": "Q3"},
+      {"field": "max_median_age", "type": "quantitative", "format": ".1f", "title": "Maximum"}
     ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#57534e", "strokeWidth": 2},
+      "encoding": {
+        "y": {
+          "field": "min_median_age",
+          "type": "quantitative",
+          "title": "Median age (years)",
+          "axis": {
+            "grid": true,
+            "gridDash": [2, 4],
+            "labels": true,
+            "ticks": true,
+            "labelFontSize": 13,
+            "titleFontSize": 14,
+            "tickCount": 6
+          },
+          "scale": {"domain": [20, 70]}
+        },
+        "y2": {"field": "max_median_age"}
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "size": 34,
+        "opacity": 0.82,
+        "stroke": "#292524",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "q1_median_age",
+          "type": "quantitative",
+          "scale": {"domain": [20, 70]}
+        },
+        "y2": {"field": "q3_median_age"},
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "range": ["#9a3412", "#b45309", "#ca8a04", "#4d7c0f", "#0f766e", "#0369a1", "#4338ca", "#7e22ce", "#a21caf"]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "tick",
+        "orient": "horizontal",
+        "size": 24,
+        "thickness": 2,
+        "color": "#111827"
+      },
+      "encoding": {
+        "x": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {"field": "median_median_age", "order": "descending"}
+        },
+        "y": {
+          "field": "min_median_age",
+          "type": "quantitative",
+          "scale": {"domain": [20, 70]}
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "tick",
+        "orient": "horizontal",
+        "size": 24,
+        "thickness": 2,
+        "color": "#111827"
+      },
+      "encoding": {
+        "x": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {"field": "median_median_age", "order": "descending"}
+        },
+        "y": {
+          "field": "max_median_age",
+          "type": "quantitative",
+          "scale": {"domain": [20, 70]}
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "tick",
+        "orient": "horizontal",
+        "size": 34,
+        "thickness": 3,
+        "color": "#111827"
+      },
+      "encoding": {
+        "y": {
+          "field": "median_median_age",
+          "type": "quantitative",
+          "scale": {"domain": [20, 70]}
+        }
+      }
+    }
+  ],
+  "resolve": {
+    "scale": {"y": "shared"}
+  },
+  "config": {
+    "font": "Inter, Segoe UI, Arial, sans-serif",
+    "axis": {"domainColor": "#a8a29e", "tickColor": "#a8a29e", "labelColor": "#44403c", "titleColor": "#44403c"},
+    "view": {"stroke": null}
   }
 }
+

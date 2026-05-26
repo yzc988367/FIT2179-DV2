@@ -1,62 +1,69 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Proportion of Population Aged 65+ by State and Territory, 2024",
+  "title": {
+    "text": "Proportion of Population Aged 65+ by State and Territory, 2024",
+    "subtitle": "Dashed line marks the national average of 17.3%",
+    "fontSize": 19,
+    "subtitleFontSize": 14,
+    "anchor": "start"
+  },
   "width": "container",
-  "height": 300,
-  "data": {"url": "data/older_population_lga.csv"},
-  "transform": [
-    {
-      "aggregate": [
-        {"op": "sum", "field": "total_population", "as": "state_pop"},
-        {"op": "sum", "field": "pop_65_plus", "as": "state_65plus"}
-      ],
-      "groupby": ["state"]
-    },
-    {
-      "calculate": "datum.state_65plus / datum.state_pop * 100",
-      "as": "state_percent"
-    }
-  ],
+  "height": 340,
   "layer": [
     {
-      "mark": {"type": "circle", "color": "#d9480f", "size": 160,
-        "stroke": "white", "strokeWidth": 1.5},
+      "data": {"values": [{"national_avg": 17.28, "label": "National average 17.3%"}]},
+      "mark": {"type": "rule", "color": "#78716c", "strokeDash": [5, 5], "strokeWidth": 1.7},
+      "encoding": {"x": {"field": "national_avg", "type": "quantitative"}}
+    },
+    {
+      "data": {"values": [{"national_avg": 17.28, "label": "National average 17.3%"}]},
+      "mark": {"type": "text", "align": "left", "baseline": "top", "dx": 6, "dy": -8, "fontSize": 12, "color": "#57534e"},
+      "encoding": {
+        "x": {"field": "national_avg", "type": "quantitative"},
+        "y": {"value": 0},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "data": {"url": "data/older_population_lga.csv"},
+      "transform": [
+        {
+          "aggregate": [
+            {"op": "sum", "field": "total_population", "as": "state_pop"},
+            {"op": "sum", "field": "pop_65_plus", "as": "state_65plus"}
+          ],
+          "groupby": ["state"]
+        },
+        {"calculate": "datum.state_65plus / datum.state_pop * 100", "as": "state_percent"}
+      ],
+      "mark": {"type": "circle", "color": "#c2410c", "size": 170, "stroke": "#ffffff", "strokeWidth": 1.5},
       "encoding": {
         "y": {
           "field": "state",
           "type": "nominal",
           "sort": "-x",
           "title": null,
-          "axis": {"labelFontSize": 12}
+          "axis": {"labelFontSize": 13}
         },
         "x": {
           "field": "state_percent",
           "type": "quantitative",
-          "title": "% Aged 65+",
-          "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
+          "title": "% aged 65+",
+          "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14},
+          "scale": {"domain": [0, 25]}
         },
         "tooltip": [
           {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "state_percent", "type": "quantitative", "format": ".1f",
-            "title": "% Aged 65+"},
-          {"field": "state_65plus", "type": "quantitative", "format": ",",
-            "title": "People 65+"},
-          {"field": "state_pop", "type": "quantitative", "format": ",",
-            "title": "Total Population"}
+          {"field": "state_percent", "type": "quantitative", "format": ".1f", "title": "% aged 65+"},
+          {"field": "state_65plus", "type": "quantitative", "format": ",", "title": "People 65+"},
+          {"field": "state_pop", "type": "quantitative", "format": ",", "title": "Total population"}
         ]
       }
-    },
-    {
-      "data": {"values": [{"national_avg": 17.28}]},
-      "mark": {
-        "type": "rule",
-        "color": "#888888",
-        "strokeDash": [4, 4],
-        "strokeWidth": 1.5
-      },
-      "encoding": {
-        "x": {"field": "national_avg", "type": "quantitative"}
-      }
     }
-  ]
+  ],
+  "config": {
+    "font": "Inter, Segoe UI, Arial, sans-serif",
+    "axis": {"domainColor": "#a8a29e", "tickColor": "#a8a29e", "labelColor": "#44403c", "titleColor": "#44403c"},
+    "view": {"stroke": null}
+  }
 }

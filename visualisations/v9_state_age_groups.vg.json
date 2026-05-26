@@ -1,8 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Older Population Composition by State, 2024",
+  "title": {
+    "text": "Older Population Composition by State, 2024",
+    "subtitle": "Percentage of each state's 65+ population by age band",
+    "fontSize": 19,
+    "subtitleFontSize": 14,
+    "anchor": "start"
+  },
   "width": "container",
-  "height": 360,
+  "height": 410,
   "data": {"url": "data/older_population_lga.csv"},
   "transform": [
     {
@@ -14,53 +20,50 @@
       ],
       "groupby": ["state"]
     },
+    {"fold": ["sum_65_74", "sum_75_84", "sum_85_plus"], "as": ["age_group", "count"]},
+    {"calculate": "datum.count / datum.state_65plus * 100", "as": "percent_of_older"},
     {
-      "fold": ["sum_65_74", "sum_75_84", "sum_85_plus"],
-      "as": ["age_group", "count"]
-    },
-    {
-      "calculate": "datum.count / datum.state_65plus * 100",
-      "as": "percent_of_older"
-    },
-    {
-      "calculate": "replace(replace(replace(datum.age_group, 'sum_65_74', '65–74'), 'sum_75_84', '75–84'), 'sum_85_plus', '85+')",
+      "calculate": "replace(replace(replace(datum.age_group, 'sum_65_74', '65-74'), 'sum_75_84', '75-84'), 'sum_85_plus', '85+')",
       "as": "age_label"
     }
   ],
-  "mark": {"type": "bar"},
+  "mark": {"type": "bar", "cornerRadiusEnd": 2},
   "encoding": {
     "x": {
       "field": "state",
       "type": "nominal",
       "title": null,
       "sort": "-y",
-      "axis": {"labelAngle": -35, "labelFontSize": 11}
+      "axis": {"labelAngle": -30, "labelFontSize": 12, "labelLimit": 130}
     },
     "y": {
       "field": "percent_of_older",
       "type": "quantitative",
-      "title": "% of all people 65+",
+      "title": "% of people aged 65+",
       "scale": {"domain": [0, 65]},
-      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 12}
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14}
     },
     "xOffset": {"field": "age_label"},
     "color": {
       "field": "age_label",
       "type": "nominal",
-      "title": "Age Group",
+      "title": "Age group",
       "scale": {
-        "domain": ["65–74", "75–84", "85+"],
-        "range": ["#fdbb84", "#e34a33", "#800026"]
+        "domain": ["65-74", "75-84", "85+"],
+        "range": ["#fbbf24", "#f97316", "#991b1b"]
       },
-      "legend": {"orient": "top", "labelFontSize": 12}
+      "legend": {"orient": "top", "labelFontSize": 13, "titleFontSize": 14}
     },
     "tooltip": [
       {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "age_label", "type": "nominal", "title": "Age Group"},
-      {"field": "percent_of_older", "type": "quantitative", "format": ".1f",
-        "title": "% of 65+ Pop."},
-      {"field": "count", "type": "quantitative", "format": ",",
-        "title": "Number of People"}
+      {"field": "age_label", "type": "nominal", "title": "Age group"},
+      {"field": "percent_of_older", "type": "quantitative", "format": ".1f", "title": "% of 65+ population"},
+      {"field": "count", "type": "quantitative", "format": ",", "title": "Number of people"}
     ]
+  },
+  "config": {
+    "font": "Inter, Segoe UI, Arial, sans-serif",
+    "axis": {"domainColor": "#a8a29e", "tickColor": "#a8a29e", "labelColor": "#44403c", "titleColor": "#44403c"},
+    "view": {"stroke": null}
   }
 }
