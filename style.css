@@ -15,7 +15,13 @@ html {
 body {
   font-family: "Inter", "Segoe UI", Arial, sans-serif;
   color: #292524;
-  background: #eef1f5;
+  background-color: #eaf1f6;
+  background-image:
+    radial-gradient(circle at top left, rgba(185, 210, 225, 0.38), transparent 38%),
+    radial-gradient(circle at bottom right, rgba(200, 220, 235, 0.32), transparent 42%),
+    repeating-linear-gradient(115deg, rgba(64, 92, 118, 0.035) 0, rgba(64, 92, 118, 0.035) 1px, transparent 1px, transparent 34px),
+    repeating-linear-gradient(25deg, rgba(255, 255, 255, 0.24) 0, rgba(255, 255, 255, 0.24) 1px, transparent 1px, transparent 46px),
+    linear-gradient(180deg, #f2f7fb 0%, #e8f0f5 100%);
   line-height: 1.55;
   overflow-x: hidden;
 }
@@ -187,14 +193,15 @@ body {
 
 .map-primary,
 .map-secondary {
-  padding-top: 0.75rem;
+  grid-column: 1 / -1;
+  padding: 0.5rem 0.5rem 0.58rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.map-explainer {
-  color: #44403c;
-  font-size: 0.94rem;
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
+.map-primary .chart-note,
+.map-secondary .chart-note {
+  margin-top: 0.35rem;
 }
 
 /* ===== Takeaway Panel (Section 5) ===== */
@@ -252,7 +259,7 @@ body {
   margin: 16px auto;
   background: #292524;
   color: #d6d3d1;
-  padding: 1rem 1.15rem;
+  padding: 0.9rem 1rem;
   border-radius: 8px;
   font-size: 0.88rem;
   line-height: 1.55;
@@ -265,8 +272,9 @@ body {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.65fr);
-  gap: 1rem;
+  grid-template-columns: minmax(0, 1.4fr) minmax(170px, 0.8fr) minmax(0, 1.4fr);
+  gap: 32px;
+  align-items: start;
 }
 
 .site-footer h4 {
@@ -274,7 +282,7 @@ body {
   font-size: 0.9rem;
   font-weight: 800;
   margin-bottom: 0.25rem;
-  margin-top: 0.65rem;
+  margin-top: 0.55rem;
 }
 
 .site-footer h4:first-child {
@@ -283,6 +291,10 @@ body {
 
 .site-footer p {
   margin-bottom: 0.25rem;
+}
+
+.footer-col {
+  min-width: 0;
 }
 
 .site-footer a {

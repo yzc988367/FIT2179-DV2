@@ -74,16 +74,13 @@
   </p>
 
   <!-- Vis 4: Choropleth Map -->
-  <div class="chart-box chart-half map-primary">
+  <div class="chart-box chart-wide map-primary">
     <div id="vis4"></div>
     <p class="chart-note">Coastal and regional LGAs &ndash; particularly along the NSW and Victorian coasts &ndash; show some of the highest proportions of older residents. Blue areas are below the national average of 17.3%, while orange areas are above it. Remote inland areas and some outer-suburban growth corridors tend to have younger age profiles. Source: ABS Regional Population by Age and Sex, 2024; ABS ASGS Edition 3 Digital Boundary Files.</p>
   </div>
 
   <!-- Vis 5: Proportional Symbol Map -->
-  <div class="chart-box chart-half map-secondary">
-    <div class="map-explainer">
-      This second map switches from percentages to counts. Large circles show where the largest numbers of older Australians live.
-    </div>
+  <div class="chart-box chart-wide map-secondary">
     <div id="vis5"></div>
     <p class="chart-note">The largest absolute numbers of older Australians are concentrated in capital cities and major coastal centres. While some regional LGAs have high percentages of older residents, the greatest numbers are in metropolitan areas. Circle size is proportional to the number of people aged 65+. Source: ABS Regional Population by Age and Sex, 2024.</p>
   </div>
@@ -189,7 +186,7 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-grid">
-      <div>
+      <div class="footer-col footer-sources">
         <h4>Data Sources</h4>
         <p>
           <a href="https://www.abs.gov.au/statistics/people/population/regional-population-age-and-sex/latest-release">Australian Bureau of Statistics (ABS), Regional Population by Age and Sex, 2024.</a><br>
@@ -197,12 +194,16 @@
           <a href="https://www.aihw.gov.au/reports/older-people/older-australians/contents/demographic-profile">Australian Institute of Health and Welfare (AIHW), Rural and Remote Health, 2023.</a>
         </p>
       </div>
-      <div>
+      <div class="footer-col footer-meta">
         <h4>Author</h4>
         <p>Yuanzhe Chen</p>
 
         <h4>Date</h4>
         <p>26 May 2026</p>
+      </div>
+      <div class="footer-col footer-ai">
+        <h4>AI Acknowledgement</h4>
+        <p>Generative AI tools were used to assist with coding, Vega-Lite chart development, layout refinement, wording and debugging. All data, design decisions and final content were reviewed and approved by the author. No data values were fabricated.</p>
       </div>
     </div>
   </div>
