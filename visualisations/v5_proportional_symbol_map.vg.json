@@ -3,12 +3,12 @@
   "title": {
     "text": "Number of People Aged 65+ by Local Government Area, 2024",
     "subtitle": "Circle size shows the absolute number of older residents",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
+    "fontSize": 23,
+    "subtitleFontSize": 16,
     "anchor": "start"
   },
   "width": "container",
-  "height": 560,
+  "height": 680,
   "projection": {"type": "mercator", "center": [133.5, -27]},
   "layer": [
     {
@@ -43,8 +43,8 @@
           "legend": {
             "orient": "bottom-right",
             "format": "~s",
-            "labelFontSize": 13,
-            "titleFontSize": 14
+            "labelFontSize": 15,
+            "titleFontSize": 16
           }
         },
         "tooltip": [

@@ -3,12 +3,12 @@
   "title": {
     "text": "How Median Age Varies Across LGAs Within Each State, 2024",
     "subtitle": "Each box summarises the spread of LGA median ages in one state or territory",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
+    "fontSize": 23,
+    "subtitleFontSize": 16,
     "anchor": "start"
   },
   "width": "container",
-  "height": 430,
+  "height": 580,
   "data": {"url": "data/older_population_lga.csv"},
   "transform": [
     {
@@ -28,7 +28,7 @@
       "type": "nominal",
       "title": null,
       "sort": {"field": "median_median_age", "order": "descending"},
-      "axis": {"labelAngle": -30, "labelFontSize": 12, "labelLimit": 130}
+      "axis": {"labelAngle": -30, "labelFontSize": 14, "labelLimit": 130}
     },
     "tooltip": [
       {"field": "state", "type": "nominal", "title": "State"},
@@ -52,8 +52,8 @@
             "gridDash": [2, 4],
             "labels": true,
             "ticks": true,
-            "labelFontSize": 13,
-            "titleFontSize": 14,
+            "labelFontSize": 15,
+            "titleFontSize": 16,
             "tickCount": 6
           },
           "scale": {"domain": [20, 70]}

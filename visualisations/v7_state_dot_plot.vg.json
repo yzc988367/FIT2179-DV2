@@ -3,12 +3,12 @@
   "title": {
     "text": "Proportion of Population Aged 65+ by State and Territory, 2024",
     "subtitle": "Dashed line marks the national average of 17.3%",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
+    "fontSize": 23,
+    "subtitleFontSize": 16,
     "anchor": "start"
   },
   "width": "container",
-  "height": 340,
+  "height": 430,
   "layer": [
     {
       "data": {"values": [{"national_avg": 17.28, "label": "National average 17.3%"}]},
@@ -17,7 +17,7 @@
     },
     {
       "data": {"values": [{"national_avg": 17.28, "label": "National average 17.3%"}]},
-      "mark": {"type": "text", "align": "left", "baseline": "top", "dx": 6, "dy": -8, "fontSize": 12, "color": "#57534e"},
+      "mark": {"type": "text", "align": "left", "baseline": "top", "dx": 6, "dy": -8, "fontSize": 14, "color": "#57534e"},
       "encoding": {
         "x": {"field": "national_avg", "type": "quantitative"},
         "y": {"value": 0},
@@ -43,13 +43,13 @@
           "type": "nominal",
           "sort": "-x",
           "title": null,
-          "axis": {"labelFontSize": 13}
+          "axis": {"labelFontSize": 15}
         },
         "x": {
           "field": "state_percent",
           "type": "quantitative",
           "title": "% aged 65+",
-          "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14},
+          "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 15, "titleFontSize": 16},
           "scale": {"domain": [0, 25]}
         },
         "tooltip": [

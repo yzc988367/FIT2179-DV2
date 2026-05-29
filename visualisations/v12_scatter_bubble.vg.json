@@ -3,12 +3,12 @@
   "title": {
     "text": "LGA Population Size vs Share Aged 65+, 2024",
     "subtitle": "Large populations and high ageing shares are different local planning challenges",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
+    "fontSize": 23,
+    "subtitleFontSize": 16,
     "anchor": "start"
   },
   "width": "container",
-  "height": 470,
+  "height": 660,
   "data": {"url": "data/older_population_lga.csv"},
   "layer": [
     {
@@ -18,7 +18,7 @@
     },
     {
       "data": {"values": [{"x": 1300, "national_avg": 17.28, "label": "National average 17.3%"}]},
-      "mark": {"type": "text", "align": "left", "baseline": "bottom", "dy": -5, "fontSize": 12, "color": "#57534e"},
+      "mark": {"type": "text", "align": "left", "baseline": "bottom", "dy": -5, "fontSize": 14, "color": "#57534e"},
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
         "y": {"field": "national_avg", "type": "quantitative"},
@@ -33,21 +33,21 @@
           "type": "quantitative",
           "title": "Total LGA population (log scale)",
           "scale": {"type": "log"},
-          "axis": {"grid": true, "gridDash": [2, 4], "format": "~s", "labelFontSize": 13, "titleFontSize": 14}
+          "axis": {"grid": true, "gridDash": [2, 4], "format": "~s", "labelFontSize": 15, "titleFontSize": 16}
         },
         "y": {
           "field": "percent_65_plus",
           "type": "quantitative",
           "title": "% aged 65+",
           "scale": {"domain": [0, 55]},
-          "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14}
+          "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 15, "titleFontSize": 16}
         },
         "size": {
           "field": "pop_65_plus",
           "type": "quantitative",
           "title": "People 65+",
           "scale": {"type": "sqrt", "range": [20, 650]},
-          "legend": {"labelFontSize": 13, "titleFontSize": 14, "format": "~s"}
+          "legend": {"labelFontSize": 15, "titleFontSize": 16, "format": "~s"}
         },
         "color": {
           "field": "state",
@@ -56,7 +56,7 @@
           "scale": {
             "range": ["#9a3412", "#b45309", "#ca8a04", "#4d7c0f", "#0f766e", "#0369a1", "#4338ca", "#7e22ce", "#a21caf"]
           },
-          "legend": {"labelFontSize": 12, "titleFontSize": 13}
+          "legend": {"labelFontSize": 14, "titleFontSize": 15}
         },
         "tooltip": [
           {"field": "lga_name", "type": "nominal", "title": "LGA"},

@@ -3,12 +3,12 @@
   "title": {
     "text": "Top LGAs by Share of Residents Aged 65+, 2024",
     "subtitle": "Top 15 local government areas ranked by the percentage of residents aged 65+",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
+    "fontSize": 23,
+    "subtitleFontSize": 16,
     "anchor": "start"
   },
   "width": "container",
-  "height": 430,
+  "height": 580,
   "data": {"url": "data/older_population_lga.csv"},
   "transform": [
     {
@@ -32,13 +32,13 @@
       "type": "nominal",
       "sort": {"field": "percent_65_plus_num", "order": "descending"},
       "title": null,
-      "axis": {"labelFontSize": 13, "labelLimit": 300}
+      "axis": {"labelFontSize": 15, "labelLimit": 300}
     },
     "x": {
       "field": "percent_65_plus_num",
       "type": "quantitative",
       "title": "% aged 65+",
-      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14},
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 15, "titleFontSize": 16},
       "scale": {"domain": [0, 55]}
     },
     "tooltip": [
@@ -59,7 +59,7 @@
         "align": "left",
         "baseline": "middle",
         "dx": 7,
-        "fontSize": 13,
+        "fontSize": 15,
         "fontWeight": 700,
         "color": "#44403c"
       },

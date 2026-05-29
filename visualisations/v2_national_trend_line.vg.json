@@ -3,12 +3,12 @@
   "title": {
     "text": "Australians Aged 65 and Over, 2001-2024",
     "subtitle": "Share of the national population aged 65+",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
+    "fontSize": 23,
+    "subtitleFontSize": 16,
     "anchor": "start"
   },
   "width": "container",
-  "height": 390,
+  "height": 470,
   "data": {"url": "data/ageing_trend.csv"},
   "layer": [
     {
@@ -23,7 +23,7 @@
           "field": "year",
           "type": "temporal",
           "title": null,
-          "axis": {"grid": false, "labelFontSize": 13, "titleFontSize": 14}
+          "axis": {"grid": false, "labelFontSize": 15, "titleFontSize": 16}
         },
         "y": {
           "field": "percent_65_plus",
@@ -32,8 +32,8 @@
           "axis": {
             "grid": true,
             "gridDash": [2, 4],
-            "labelFontSize": 13,
-            "titleFontSize": 14
+            "labelFontSize": 15,
+            "titleFontSize": 16
           },
           "scale": {"domain": [10, 20]}
         },
@@ -52,7 +52,7 @@
         "baseline": "middle",
         "dx": 8,
         "dy": -10,
-        "fontSize": 13,
+        "fontSize": 15,
         "fontWeight": 700,
         "color": "#7c2d12",
         "text": "17.3% in 2024"

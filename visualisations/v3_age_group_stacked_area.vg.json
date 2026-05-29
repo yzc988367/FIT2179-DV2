@@ -3,12 +3,12 @@
   "title": {
     "text": "Growth of Older Age Groups, 2001-2024",
     "subtitle": "Population counts by older age band",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
+    "fontSize": 23,
+    "subtitleFontSize": 16,
     "anchor": "start"
   },
   "width": "container",
-  "height": 390,
+  "height": 470,
   "data": {"url": "data/ageing_trend.csv"},
   "transform": [
     {
@@ -26,14 +26,14 @@
       "field": "year",
       "type": "temporal",
       "title": null,
-      "axis": {"grid": false, "labelFontSize": 13, "titleFontSize": 14}
+      "axis": {"grid": false, "labelFontSize": 15, "titleFontSize": 16}
     },
     "y": {
       "field": "population",
       "type": "quantitative",
       "title": "Population",
       "stack": true,
-      "axis": {"grid": true, "gridDash": [2, 4], "format": "~s", "labelFontSize": 13, "titleFontSize": 14}
+      "axis": {"grid": true, "gridDash": [2, 4], "format": "~s", "labelFontSize": 15, "titleFontSize": 16}
     },
     "color": {
       "field": "age_label",
@@ -44,7 +44,7 @@
         "domain": ["65-74", "75-84", "85+"],
         "range": ["#fbbf24", "#f97316", "#991b1b"]
       },
-      "legend": {"orient": "top", "labelFontSize": 13, "titleFontSize": 14}
+      "legend": {"orient": "top", "labelFontSize": 15, "titleFontSize": 16}
     },
     "tooltip": [
       {"field": "year", "type": "temporal", "format": "%Y", "title": "Year"},

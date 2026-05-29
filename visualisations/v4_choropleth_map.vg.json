@@ -3,12 +3,12 @@
   "title": {
     "text": "Percentage of Population Aged 65+ by Local Government Area, 2024",
     "subtitle": "National average: 17.3% aged 65+ in 2024",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
+    "fontSize": 23,
+    "subtitleFontSize": 16,
     "anchor": "start"
   },
   "width": "container",
-  "height": 640,
+  "height": 680,
   "data": {
     "url": "data/australia_lga.topojson",
     "format": {"type": "topojson", "feature": "australia_lga"}
@@ -54,8 +54,8 @@
             "format": ".0f",
             "orient": "bottom-right",
             "gradientLength": 220,
-            "labelFontSize": 13,
-            "titleFontSize": 14
+            "labelFontSize": 15,
+            "titleFontSize": 16
           }
         },
         "tooltip": [

@@ -3,12 +3,12 @@
   "title": {
     "text": "Proportion of Population Aged 65+ by Remoteness Category, 2023",
     "subtitle": "AIHW reports inner regional areas as the oldest remoteness category",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
+    "fontSize": 23,
+    "subtitleFontSize": 16,
     "anchor": "start"
   },
   "width": "container",
-  "height": 310,
+  "height": 390,
   "data": {"url": "data/older_population_remoteness.csv"},
   "transform": [
     {
@@ -23,13 +23,13 @@
       "type": "nominal",
       "sort": "-x",
       "title": null,
-      "axis": {"labelFontSize": 13, "labelLimit": 260}
+      "axis": {"labelFontSize": 15, "labelLimit": 260}
     },
     "x": {
       "field": "percent_65_plus",
       "type": "quantitative",
       "title": "% aged 65+",
-      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14},
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 15, "titleFontSize": 16},
       "scale": {"domain": [0, 25]}
     },
     "color": {

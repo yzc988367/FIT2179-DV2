@@ -3,12 +3,12 @@
   "title": {
     "text": "Older Population Composition by State, 2024",
     "subtitle": "Percentage of each state's 65+ population by age band",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
+    "fontSize": 23,
+    "subtitleFontSize": 16,
     "anchor": "start"
   },
   "width": "container",
-  "height": 410,
+  "height": 560,
   "data": {"url": "data/older_population_lga.csv"},
   "transform": [
     {
@@ -34,14 +34,14 @@
       "type": "nominal",
       "title": null,
       "sort": "-y",
-      "axis": {"labelAngle": -30, "labelFontSize": 12, "labelLimit": 130}
+      "axis": {"labelAngle": -30, "labelFontSize": 14, "labelLimit": 130}
     },
     "y": {
       "field": "percent_of_older",
       "type": "quantitative",
       "title": "% of people aged 65+",
       "scale": {"domain": [0, 65]},
-      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14}
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 15, "titleFontSize": 16}
     },
     "xOffset": {"field": "age_label"},
     "color": {
@@ -52,7 +52,7 @@
         "domain": ["65-74", "75-84", "85+"],
         "range": ["#fbbf24", "#f97316", "#991b1b"]
       },
-      "legend": {"orient": "top", "labelFontSize": 13, "titleFontSize": 14}
+      "legend": {"orient": "top", "labelFontSize": 15, "titleFontSize": 16}
     },
     "tooltip": [
       {"field": "state", "type": "nominal", "title": "State"},

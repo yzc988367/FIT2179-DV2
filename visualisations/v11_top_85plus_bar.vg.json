@@ -3,12 +3,12 @@
   "title": {
     "text": "Top 10 LGAs by Share of Residents Aged 85+, 2024",
     "subtitle": "Oldest-old shares are highest in a small group of local areas",
-    "fontSize": 19,
-    "subtitleFontSize": 14,
+    "fontSize": 23,
+    "subtitleFontSize": 16,
     "anchor": "start"
   },
   "width": "container",
-  "height": 360,
+  "height": 450,
   "data": {"url": "data/older_population_lga.csv"},
   "transform": [
     {"calculate": "datum.pop_85_plus / datum.total_population * 100", "as": "percent_85_plus"},
@@ -26,13 +26,13 @@
       "type": "nominal",
       "sort": "-x",
       "title": null,
-      "axis": {"labelFontSize": 13, "labelLimit": 300}
+      "axis": {"labelFontSize": 15, "labelLimit": 300}
     },
     "x": {
       "field": "percent_85_plus",
       "type": "quantitative",
       "title": "% aged 85+",
-      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 13, "titleFontSize": 14},
+      "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 15, "titleFontSize": 16},
       "scale": {"domain": [0, 8]}
     },
     "tooltip": [
