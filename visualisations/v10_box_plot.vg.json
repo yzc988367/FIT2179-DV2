@@ -1,10 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "How Median Age Varies Across LGAs Within Each State, 2024",
+    "text": ["How Median Age Varies Across LGAs", "Within Each State, 2024"],
     "subtitle": "Each box summarises the spread of LGA median ages in one state or territory",
     "fontSize": 23,
     "subtitleFontSize": 16,
+    "lineHeight": 27,
     "anchor": "start"
   },
   "width": "container",

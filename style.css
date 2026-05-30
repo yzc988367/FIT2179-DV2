@@ -7,6 +7,18 @@
   padding: 0;
 }
 
+:root {
+  --charcoal: #292524;
+  --charcoal-deep: #1c1917;
+  --copper: #c2410c;
+  --copper-soft: #d97706;
+  --burgundy: #7f1d1d;
+  --map-blue: #2f6f9f;
+  --mist-blue: #e3edf5;
+  --paper: #fbfcfd;
+  --panel-border: #d7e0ea;
+}
+
 html {
   font-size: 18px;
   scroll-behavior: smooth;
@@ -14,14 +26,13 @@ html {
 
 body {
   font-family: "Inter", "Segoe UI", Arial, sans-serif;
-  color: #292524;
-  background-color: #eaf1f6;
+  color: var(--charcoal);
+  background-color: var(--mist-blue);
   background-image:
-    radial-gradient(circle at top left, rgba(185, 210, 225, 0.38), transparent 38%),
-    radial-gradient(circle at bottom right, rgba(200, 220, 235, 0.32), transparent 42%),
-    repeating-linear-gradient(115deg, rgba(64, 92, 118, 0.035) 0, rgba(64, 92, 118, 0.035) 1px, transparent 1px, transparent 34px),
-    repeating-linear-gradient(25deg, rgba(255, 255, 255, 0.24) 0, rgba(255, 255, 255, 0.24) 1px, transparent 1px, transparent 46px),
-    linear-gradient(180deg, #f2f7fb 0%, #e8f0f5 100%);
+    repeating-linear-gradient(0deg, rgba(53, 78, 99, 0.052) 0, rgba(53, 78, 99, 0.052) 1px, transparent 1px, transparent 56px),
+    repeating-linear-gradient(90deg, rgba(53, 78, 99, 0.044) 0, rgba(53, 78, 99, 0.044) 1px, transparent 1px, transparent 68px),
+    repeating-linear-gradient(135deg, rgba(72, 106, 131, 0.028) 0, rgba(72, 106, 131, 0.028) 1px, transparent 1px, transparent 26px),
+    linear-gradient(180deg, #f1f7fb 0%, #e3edf5 46%, #dbe8f1 100%);
   line-height: 1.55;
   overflow-x: hidden;
 }
@@ -36,11 +47,34 @@ body {
 .site-header {
   width: min(1400px, calc(100% - 24px));
   margin: 14px auto 0;
-  background: linear-gradient(160deg, #292524 0%, #44403c 100%);
+  position: relative;
+  overflow: hidden;
+  background-color: var(--charcoal);
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.045) 0, rgba(255, 255, 255, 0.045) 1px, transparent 1px, transparent 42px),
+    linear-gradient(150deg, #1f1a17 0%, #2f2925 58%, #3e3833 100%);
   color: #fafaf8;
   padding: 1.25rem 1.25rem 1.15rem;
-  border: 1px solid #1c1917;
+  border: 1px solid rgba(28, 25, 23, 0.9);
   border-radius: 8px;
+  box-shadow: 0 14px 30px rgba(28, 25, 23, 0.18);
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--copper-soft), var(--burgundy), var(--map-blue));
+  opacity: 0.9;
+}
+
+.site-header h1,
+.site-header .subtitle {
+  position: relative;
+  z-index: 1;
 }
 
 .site-header h1 {
@@ -62,15 +96,57 @@ body {
 
 /* ===== Section Panels ===== */
 .section {
+  --section-accent: var(--copper);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 18px;
-  background: #f8fafc;
-  border: 1px solid #d6dce5;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(247, 250, 252, 0.98) 100%);
+  border: 1px solid var(--panel-border);
   border-radius: 8px;
   padding: 0.95rem;
   margin: 16px 0;
-  box-shadow: 0 6px 18px rgba(68, 64, 60, 0.05);
+  box-shadow: 0 10px 24px rgba(53, 78, 99, 0.085);
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--section-accent);
+  opacity: 0.82;
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--section-accent), transparent 42%);
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.page .section:nth-of-type(1) {
+  --section-accent: var(--copper);
+}
+
+.page .section:nth-of-type(2) {
+  --section-accent: var(--map-blue);
+}
+
+.page .section:nth-of-type(3) {
+  --section-accent: #b45309;
+}
+
+.page .section:nth-of-type(4) {
+  --section-accent: var(--burgundy);
+}
+
+.page .section:nth-of-type(5) {
+  --section-accent: #0f766e;
 }
 
 .section:last-of-type {
@@ -88,14 +164,14 @@ body {
 .section-title {
   font-size: 1.65rem;
   font-weight: 800;
-  color: #1c1917;
+  color: var(--charcoal-deep);
   letter-spacing: 0;
   line-height: 1.18;
   margin-bottom: -0.25rem;
 }
 
 .section-takeaway {
-  color: #9a3412;
+  color: var(--section-accent);
   font-size: 1.08rem;
   font-weight: 800;
   line-height: 1.35;
@@ -117,20 +193,20 @@ body {
 }
 
 .kpi-card {
-  background: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #fffaf5 100%);
   border-radius: 8px;
   padding: 0.8rem 0.85rem;
-  box-shadow: 0 3px 12px rgba(68, 64, 60, 0.07);
+  box-shadow: 0 7px 18px rgba(68, 64, 60, 0.075);
   text-align: center;
   border: 1px solid #eadfd2;
-  border-top: 4px solid #d97706;
+  border-top: 4px solid var(--copper-soft);
   min-width: 0;
 }
 
 .kpi-number {
   font-size: 1.9rem;
   font-weight: 800;
-  color: #c2410c;
+  color: var(--copper);
   line-height: 1.15;
 }
 
@@ -149,12 +225,12 @@ body {
 .chart-box {
   grid-column: 1 / -1;
   min-width: 0;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.98);
   border-radius: 8px;
   padding: 0.72rem 0.72rem 0.68rem;
   margin: 0;
-  box-shadow: 0 3px 12px rgba(68, 64, 60, 0.07);
-  border: 1px solid #dfe5ee;
+  box-shadow: 0 8px 20px rgba(53, 78, 99, 0.075);
+  border: 1px solid rgba(205, 216, 228, 0.95);
   overflow: hidden;
 }
 
@@ -184,6 +260,15 @@ body {
   line-height: 1.42;
 }
 
+.heatmap-card {
+  align-self: stretch;
+  padding: 0.62rem 0.62rem 0.58rem;
+}
+
+.heatmap-card .chart-note {
+  margin-top: 1.25rem;
+}
+
 .chart-error {
   color: #b91c1c;
   font-size: 0.9rem;
@@ -206,13 +291,13 @@ body {
 
 /* ===== Takeaway Panel (Section 5) ===== */
 .takeaway-panel {
-  background: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #fffaf5 100%);
   border-radius: 8px;
   padding: 0.95rem;
   margin-top: 0;
-  box-shadow: 0 3px 12px rgba(68, 64, 60, 0.07);
+  box-shadow: 0 8px 20px rgba(68, 64, 60, 0.08);
   border: 1px solid #eadfd2;
-  border-left: 5px solid #d97706;
+  border-left: 5px solid var(--copper-soft);
 }
 
 .takeaway-panel h3 {
@@ -243,7 +328,7 @@ body {
   flex-shrink: 0;
   width: 1.45rem;
   height: 1.45rem;
-  background: #d97706;
+  background: var(--copper-soft);
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -257,12 +342,17 @@ body {
 .site-footer {
   width: min(1400px, calc(100% - 24px));
   margin: 16px auto;
-  background: #292524;
+  background-color: var(--charcoal);
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.035) 0, rgba(255, 255, 255, 0.035) 1px, transparent 1px, transparent 42px),
+    linear-gradient(150deg, #1f1a17 0%, #2f2925 100%);
   color: #d6d3d1;
   padding: 0.9rem 1rem;
+  border-top: 3px solid var(--copper);
   border-radius: 8px;
   font-size: 0.88rem;
   line-height: 1.55;
+  box-shadow: 0 10px 24px rgba(28, 25, 23, 0.15);
 }
 
 .site-footer .footer-inner {

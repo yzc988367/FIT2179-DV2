@@ -1,10 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Proportion of Population Aged 65+ by State and Territory, 2024",
+    "text": ["Proportion of Population Aged 65+", "by State and Territory"],
     "subtitle": "Dashed line marks the national average of 17.3%",
     "fontSize": 23,
     "subtitleFontSize": 16,
+    "lineHeight": 27,
     "anchor": "start"
   },
   "width": "container",

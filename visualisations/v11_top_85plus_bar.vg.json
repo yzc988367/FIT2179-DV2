@@ -17,9 +17,9 @@
       "sort": [{"field": "percent_85_plus", "order": "descending"}]
     },
     {"filter": "datum.rank <= 10"},
-    {"calculate": "datum.lga_name + ', ' + datum.state", "as": "label"}
+    {"calculate": "datum.lga_name + ', ' + datum.state", "as": "label"},
+    {"calculate": "format(datum.percent_85_plus, '.1f') + '%'", "as": "percent_label"}
   ],
-  "mark": {"type": "bar", "cornerRadiusEnd": 3, "color": "#991b1b"},
   "encoding": {
     "y": {
       "field": "label",
@@ -33,7 +33,7 @@
       "type": "quantitative",
       "title": "% aged 85+",
       "axis": {"grid": true, "gridDash": [2, 4], "labelFontSize": 15, "titleFontSize": 16},
-      "scale": {"domain": [0, 8]}
+      "scale": {"domain": [0, 9]}
     },
     "tooltip": [
       {"field": "lga_name", "type": "nominal", "title": "LGA"},
@@ -43,6 +43,25 @@
       {"field": "median_age", "type": "quantitative", "format": ".1f", "title": "Median age"}
     ]
   },
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusEnd": 3, "color": "#991b1b"}
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 7,
+        "fontSize": 15,
+        "fontWeight": 700,
+        "color": "#44403c"
+      },
+      "encoding": {
+        "text": {"field": "percent_label", "type": "nominal"}
+      }
+    }
+  ],
   "config": {
     "font": "Inter, Segoe UI, Arial, sans-serif",
     "axis": {"domainColor": "#a8a29e", "tickColor": "#a8a29e", "labelColor": "#44403c", "titleColor": "#44403c"},

@@ -1,10 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Proportion of Population Aged 65+ by Remoteness Category, 2023",
+    "text": ["Proportion of Population Aged 65+", "by Remoteness Category"],
     "subtitle": "AIHW reports inner regional areas as the oldest remoteness category",
     "fontSize": 23,
     "subtitleFontSize": 16,
+    "lineHeight": 27,
     "anchor": "start"
   },
   "width": "container",
